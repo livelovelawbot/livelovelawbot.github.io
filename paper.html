@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="LawBot is a lawyer chatbot built by Cambridge Students to give free legal knowledge. Currently, LawBot is being redeveloped as a messenger application.">
+    <meta name="keywords" content="Legal, Advice, Free, Artificial Intelligence, Cambridge, University, Startup">
+    <meta name="author" content="L. Bull">
+
+    <title>LawBot 2.0</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/scrolling-nav.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-86001352-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">LawBot</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a class="page-scroll" href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services">LawBot 2.0</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Section -->
+    <section id="intro" class="intro-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>What wins a case?</h1>
+                    <p><strong><br>This note explains current developments at LawBot.<br></p>
+                    <a class="btn btn-default page-scroll" href="#about">But why?</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-left">
+                    <h2>Introduction</h2>
+                    <p><strong>What wins a case?</strong> This is one of the fundamental questions of the legal profession. This is the question we are trying to answer at LawBot. We are building a matrix plotting English legal data and dozens of ist features. We are training a model on these feature vectors to identify correlations between individual features and winning or losing. We then want to provide a service that populates a user's feature vecture by interacting with the user in a chatbot format. The service then makes a prediction about the user's likelihood to win the case and then matches the user with the appropriate lawyer. The lawyer is sent an automated summary based on the feature vector. This is the LawBot pipeline.</p>
+                    <h2>Amazing. How is that gonna work?</h2>
+                    <p>Through an iterative process of training a model based on reasonable assumptions and readjusting the assumptions based on the model's performance, we are aiming to predict correctly the outcome of a case in 95% of cases.</p>
+                    <h3>There are two starting points for our assumptions:</h3>
+                    <p><strong>1. An unsupervised learning approach to show data structures</strong></p>
+                    <p>This approach will show the correlation of individual words or phrases to winning or losing a case. In this approach we train a model on two groups of cases: cases that were won and cases that were lost. We begin by removing stopwords from the data. We then tokenize the entire data using the natural language toolkit (NLTK). We also lemmatize the data using NLTK's WordNetLemmatizer function. We load the individual tokens into a mapping of all words and give them unique identifiers. We then load the tokens into vectors and assign them a label: 1 for winning, 0 for losing.</p>
+                    <p>We import sklearn's linear model and train a model using logistic regression on a sample of the data. This gives us a classification rate of: xx. We then iterate through the entire word mapping and determine the model coefficient. Every time a word has a higher coefficient than our selected threshold value, we print out the word to a local file.</p>
+                    <p>The output file contains words that correlate strongly with either winning or losing a case. Some of them are very interesting.</p>
+                    <p>This approach follows the same paradigm as the UCL paper published last year. While we think this is a good start to understanding the problem of winning or losing cases, for the purposes of our service this approach runs into significant problems. These problems will be detailed below.</p>
+                    <h3>2. Using analytical legal skills to make assumptions:</h3>
+                    <p>Computers can't (and shouldn't) do all the work for us. Our analytical legal skills are another source of assumptions. Here it is important to keep in mind that it is not necessary for the program to understand the details of litigation. The program only needs to be able to correctly identify specific features in a data set and then make predictions based on those features. So the assumptions we make using our analytical skills should not be concerned with legal technicalities but with simpler features that we can train a program to recognize.</p>
+                    <p>One such assumption that our analytical legal skills should not lead us to make is: "When the defendant has breached the duty of care it will be more likely for the applicant to win." This assumption is self-evidently true. But while it is possible to train a computer to recognize breaches of duties of care in the strict confines of English case law data, it is very difficult to do so in the free-flowing conversation we envisage our users to have with the chatbot.</p>
+                    <p>Our analytical assumptions therefore must be simpler. One assumption we currently hold (perhaps soon to be discarded) is that emotional content is positively correlated to winning a case. Another assumption we currently hold is that the age of the applicant has a large impact on winning or losing a case.</p>
+                    <p>These two approaches allow us to make a number of assumptions that we can then test. Both the unsupervised learning and the analytical approach reinforce one another.</p>
+                    <h2>Testing the assumptions</h2>
+                    <p>Once we have made our assumptions we must test them. To do this we build a large matrix plotting whether the individual features we think are important are present in the different documents or not. We then populate each feature vector using a program that scans the documents for patterns indicating the presence of specific features.</p>
+                    <p>Once the matrix is fully populated we then train different models on a sample of the data. We use scikit to show which model works best and which features are important. Based on these results, our assumptions will either be verified or rejected. We then go back to the previous stage and make better assumptions based on the results.</p>
+                    <p><strong>Through an iterative process we aim to arrive at a model that has a high MCC and scores well on other binary classification tests.</strong></p>
+                    <h2>The limits of term frequency test: the reverse engineering problem</h2>
+                    <p>Our feature vector approach is used commonly in commercial recommender systems for music or dating sites. For much of the natural language processing research in the legal world other approaches are common. Last year's UCL paper took an approach that emphasised term frequency. Many NLP systems such as email classifiers successfully use this approach.</p>
+                    <p>We think this approach is not the best one for the service we want to provide. This is because training a model using a term frequency approach requires a lot of data of the kind we are trying to make predictions about. This works fine for emails because there are a lot of openly available email databases and because the data you are trying to make predictions about (real emails) are similar to the data you used to train the model.</p>
+                    <p>But the data we are trying to make predictions about is conversational interaction with a chatbot about legal problems. Needless to say there are no data sources for this type of data. We thus have to work around the data problem by identifying key features in the data we are making predictions about and the data we are training the model on. In the former case we will do this through open ended descriptions of the problem from the user side followed by specific questions about particular features (OkCupid is a great example of these question-answer interactions.) As mentioned above, we use another program to identify these features in our own data to train the model.</p>
+                    <p>We are also considering the idea of automatically populating parts of the user's feature vector by using the data stored on their social media accounts. This would proceed with the user's consent using the relevant APIs.</p>
+                    <h2>The result</h2>
+                    <p>The result then is a prediction as to the likelihood of the user winning their case and a feature vector with detailed information about the user and their case. These rich profiles can then be used to refer the user to a lawyer specializing in this type of case. The lawyer would receive a summary of the user and their case.</p>
+                    <h2>When is all of this going to happen?</h2>
+                    <p>We want to launch our service on Facebook over the summer. Currently, we are engaged in finding the right features and training a strong model. We will be posting periodic updates on our website. We also need to study for our law school exams.</p>
+                    <p><strong>For questions or contact: contact@lawbot.info.</strong></p>           
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Scrolling Nav JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/scrolling-nav.js"></script>
+
+</body>
+
+</html>
